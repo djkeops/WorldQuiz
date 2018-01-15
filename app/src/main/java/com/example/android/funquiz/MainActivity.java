@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final static String EXTRA_MESSAGE = "com.example.android.funquiz.MESSAGE";
+    public final static String PLAYER_NAME = "com.example.android.funquiz.MESSAGE";
     EditText nameField;
 
     @Override
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.no_name_error, Toast.LENGTH_SHORT).show();
             return;
         } else {
-            openQuiz.putExtra(EXTRA_MESSAGE, message);
+            openQuiz.putExtra(PLAYER_NAME, message);
             startActivity(openQuiz);
             this.finish();
         }

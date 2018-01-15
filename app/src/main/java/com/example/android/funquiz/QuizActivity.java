@@ -33,7 +33,7 @@ public class QuizActivity extends AppCompatActivity {
     //Getting user name from MainActivity
     public String getUserName() {
         Intent openQuiz = getIntent();
-        return openQuiz.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        return openQuiz.getStringExtra(MainActivity.PLAYER_NAME);
     }
 
 
