@@ -13,8 +13,8 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/WellcomeTextView"
-            style="@style/WellcomeTextView" />
+            android:id="@+id/WelcomeTextView"
+            style="@style/WelcomeTextView" />
 
         <RelativeLayout
             android:id="@+id/quiz_card_1"

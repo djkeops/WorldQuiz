@@ -8,17 +8,17 @@ import android.widget.TextView;
 
 public class QuizActivity extends AppCompatActivity {
 
-    TextView WellcomeTextView;
+    TextView WelcomeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        //Display wellcome message
-        WellcomeTextView = findViewById(R.id.WellcomeTextView);
-        String wellcomeMessage = "Wellcome, " + getUserName() + "!";
-        WellcomeTextView.setText(wellcomeMessage);
+        //Display welcome message
+        WelcomeTextView = findViewById(R.id.WelcomeTextView);
+        String welcomeMessage = "Welcome, " + getUserName() + "!";
+        WelcomeTextView.setText(welcomeMessage);
 
     }
 
