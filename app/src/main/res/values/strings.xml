@@ -65,6 +65,9 @@
     <string name="_6">6</string>
     <string name="_7">7</string>
     <string name="_8">8</string>
+    <string name="reset_Button">reset</string>
+    <string name="submit_Button">submit</string>
+    <string name="share_Button">share</string>
 
 
 </resources>

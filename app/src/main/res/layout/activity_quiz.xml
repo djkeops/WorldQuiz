@@ -514,6 +514,34 @@
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/restButton"
+                style="@style/Buttons"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorButton"
+                android:text="@string/reset_Button" />
+
+            <Button
+                android:id="@+id/submitButton"
+                style="@style/Buttons"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorButton"
+                android:text="@string/submit_Button" />
+
+            <Button
+                android:id="@+id/shareButton"
+                style="@style/Buttons"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorButton"
+                android:text="@string/share_Button" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>
