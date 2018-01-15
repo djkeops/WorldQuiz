@@ -70,14 +70,14 @@
                 android:id="@+id/separator_1_2"
                 style="@style/QuizSeparator"
                 android:layout_below="@id/radio_group_1"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/hint1"
                 style="@style/QuizHint"
                 android:layout_below="@id/separator_1_2"
                 android:text="@string/hint1"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -135,14 +135,14 @@
                 android:id="@+id/separator_2_2"
                 style="@style/QuizSeparator"
                 android:layout_below="@id/radio_group_2"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/hint2"
                 style="@style/QuizHint"
                 android:layout_below="@id/separator_2_2"
                 android:text="@string/hint2"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -200,14 +200,14 @@
                 android:id="@+id/separator_3_2"
                 style="@style/QuizSeparator"
                 android:layout_below="@id/radio_group_3"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/hint3"
                 style="@style/QuizHint"
                 android:layout_below="@id/separator_3_2"
                 android:text="@string/hint3"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -265,14 +265,14 @@
                 android:id="@+id/separator_4_2"
                 style="@style/QuizSeparator"
                 android:layout_below="@id/radio_group_4"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/hint4"
                 style="@style/QuizHint"
                 android:layout_below="@id/separator_4_2"
                 android:text="@string/hint2"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -311,14 +311,14 @@
                 android:id="@+id/separator_5_2"
                 style="@style/QuizSeparator"
                 android:layout_below="@id/answer_edit_text_5"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/hint5"
                 style="@style/QuizHint"
                 android:layout_below="@id/separator_5_2"
                 android:text="@string/hint5"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -366,14 +366,14 @@
                 android:id="@+id/separator_6_2"
                 style="@style/QuizSeparator"
                 android:layout_below="@id/radio_group_6"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/hint6"
                 style="@style/QuizHint"
                 android:layout_below="@id/separator_6_2"
                 android:text="@string/hint6"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -432,14 +432,14 @@
                 android:id="@+id/separator_7_2"
                 style="@style/QuizSeparator"
                 android:layout_below="@id/radio_group_7"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/hint7"
                 style="@style/QuizHint"
                 android:layout_below="@id/separator_7_2"
                 android:text="@string/hint7"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -503,14 +503,14 @@
                 android:id="@+id/separator_8_2"
                 style="@style/QuizSeparator"
                 android:layout_below="@id/check_group_8"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/hint8"
                 style="@style/QuizHint"
                 android:layout_below="@id/separator_8_2"
                 android:text="@string/hint8"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -531,6 +531,7 @@
                 style="@style/Buttons"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorButton"
+                android:onClick="submit"
                 android:text="@string/submit_Button" />
 
             <Button
