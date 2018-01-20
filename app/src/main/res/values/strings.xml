@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">World Quiz</string>
     <string name="begin_Button">Start</string>
-    <string name="name_filed_hint">Please enter your name</string>
-    <string name="no_name_error">Please enter your name before start!</string>
+    <string name="name_filed_hint">Please, enter your name</string>
+    <string name="no_name_error">Please, enter your name before start!</string>
     <string name="edit_text_view_hint5">Are you sure that it\'s a dessert?!</string>
 
     <string name="question1">What\'s the main ingredient of air?</string>
@@ -68,6 +68,7 @@
     <string name="reset_Button">reset</string>
     <string name="submit_Button">submit</string>
     <string name="share_Button">share</string>
+    <string name="zero_answers_messeage">Please, answer at least one question!</string>
 
 
 </resources>
