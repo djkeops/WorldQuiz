@@ -524,6 +524,7 @@
                 style="@style/Buttons"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorButton"
+                android:onClick="reset"
                 android:text="@string/reset_Button" />
 
             <Button

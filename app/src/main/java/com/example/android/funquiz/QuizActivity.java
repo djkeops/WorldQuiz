@@ -3,7 +3,6 @@ package com.example.android.funquiz;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -23,6 +22,7 @@ public class QuizActivity extends AppCompatActivity {
     Button shareButton;
     Button resetButton;
     TextView answerQ5;
+    TextView hintTextView;
 
     //declare correct answers;
     int[] correctRadioAnswers = {R.id.radio_1_a, R.id.radio_2_c, R.id.radio_3_d, R.id.radio_4_c, R.id.radio_6_a, R.id.radio_7_a};
@@ -88,9 +88,6 @@ public class QuizActivity extends AppCompatActivity {
         //Incorrect answers score
         int incorrectScore = 0;
 
-
-        TextView hintTextView;
-
         //check if at least one question is answered
         int answeredQuestions = countAnswers();
         if (answeredQuestions == 0) {
@@ -153,24 +150,44 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }
 
+            makeHintsVisible();
 
-            //make hints separators visible
-            for (int checkBoxID : hintsSeparators) {
-                View hintSeparator = findViewById(hintsSeparators[checkBoxID]);
-                hintSeparator.setVisibility(View.VISIBLE);
-            }
-
-            //make hins visible
-            for (int checkBoxID : hintsTextViews) {
-                hintTextView = findViewById(hintsTextViews[checkBoxID]);
-                hintTextView.setVisibility(View.VISIBLE);
-            }
-            Toast.makeText(this, "Corect answers: " + score + "\nIncorect answers: " + incorrectScore, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Correct answers: " + score + "\nIncorrect answers: " + incorrectScore, Toast.LENGTH_SHORT).show();
         }
 
+    }
 
+    //this method make the hints visible
+    public void makeHintsVisible() {
+        //make hints separators visible
+        for (int hintSeparatorID : hintsSeparators) {
+            View hintSeparator = findViewById(hintSeparatorID);
+            hintSeparator.setVisibility(View.VISIBLE);
+        }
+
+        //make hints visible
+        for (int hintTextViewID : hintsTextViews) {
+            hintTextView = findViewById(hintTextViewID);
+            hintTextView.setVisibility(View.VISIBLE);
+        }
 
     }
+
+    public void reset(View view) {
+        Intent resetQuiz = new Intent(this, QuizActivity.class);
+        String message = getUserName();
+        if (message.equals("")) {
+            Toast.makeText(this, R.string.no_name_error, Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            resetQuiz.putExtra(MainActivity.PLAYER_NAME, message);
+            startActivity(resetQuiz);
+            this.finish();
+        }
+    }
+
+    //this method reset all answers
+
 
 
 }
