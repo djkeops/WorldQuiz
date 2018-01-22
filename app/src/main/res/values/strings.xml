@@ -68,7 +68,14 @@
     <string name="reset_Button">reset</string>
     <string name="submit_Button">submit</string>
     <string name="share_Button">share</string>
-    <string name="zero_answers_messeage">Please, answer at least one question!</string>
+
+    <string name="zero_answers_message">Please, answer at least one question!</string>
+    <string name="result_correct">Correct answers:</string>
+    <string name="resut_wrong">Wrong answers:</string>
+    <string name="result_answered">Answered questions:</string>
+    <string name="result_name_message">, your score is:</string>
+    <string name="share_subject">World Quiz results</string>
+    <string name="welcome">Welcome,</string>
 
 
 </resources>

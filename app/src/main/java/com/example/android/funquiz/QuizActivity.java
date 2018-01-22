@@ -24,6 +24,10 @@ public class QuizActivity extends AppCompatActivity {
     TextView answerQ5;
     TextView hintTextView;
 
+    // declare a variable for the quiz results
+    String resultMessage;
+    int totalNoQuestions = 8;
+
     //declare correct answers;
     int[] correctRadioAnswers = {R.id.radio_1_a, R.id.radio_2_c, R.id.radio_3_d, R.id.radio_4_c, R.id.radio_6_a, R.id.radio_7_a};
 
@@ -41,7 +45,7 @@ public class QuizActivity extends AppCompatActivity {
 
         //Display welcome message
         WelcomeTextView = findViewById(R.id.WelcomeTextView);
-        String welcomeMessage = "Welcome, " + getUserName() + "!";
+        String welcomeMessage = getString(R.string.welcome) + getUserName() + "!";
         WelcomeTextView.setText(welcomeMessage);
 
     }
@@ -80,7 +84,7 @@ public class QuizActivity extends AppCompatActivity {
         return answeredQuestions;
     }
 
-    //Make a view visible
+    //this method is called when the submit button is clicked and calculate results according to the user answers
     public void submit(View view) {
 
         //Correct answers score
@@ -91,7 +95,7 @@ public class QuizActivity extends AppCompatActivity {
         //check if at least one question is answered
         int answeredQuestions = countAnswers();
         if (answeredQuestions == 0) {
-            Toast.makeText(this, R.string.zero_answers_messeage, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.zero_answers_message, Toast.LENGTH_SHORT).show();
         } else {
             shareButton.setAlpha(1);
             shareButton.setEnabled(true);
@@ -136,7 +140,17 @@ public class QuizActivity extends AppCompatActivity {
                 hintTextView = findViewById(hintsTextViews[7]);
                 hintTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
             } else {
-                incorrectScore++;
+
+
+                for (int checkBoxID : checkBoxes) {
+                    CheckBox checkBox = findViewById(checkBoxID);
+                    if (checkBox.isChecked()) {
+                        incorrectScore++;
+                        break;
+                    }
+                }
+
+
                 hintTextView = findViewById(hintsTextViews[7]);
                 hintTextView.setTextColor(getResources().getColor(R.color.colorWrong));
 
@@ -146,13 +160,16 @@ public class QuizActivity extends AppCompatActivity {
                         checkBox.setTextColor(getResources().getColor(R.color.colorCorrect));
                     } else if (checkBox.isChecked()) {
                         checkBox.setTextColor(getResources().getColor(R.color.colorWrong));
+                    } else if (!checkBox.isChecked() && (checkBoxID == checkBoxes[1] || checkBoxID == checkBoxes[3])) {
+                        checkBox.setTextColor(getResources().getColor(R.color.colorWrong));
                     }
                 }
             }
 
             makeHintsVisible();
 
-            Toast.makeText(this, "Correct answers: " + score + "\nIncorrect answers: " + incorrectScore, Toast.LENGTH_SHORT).show();
+            String resultMessage = createScoreSummary(score, incorrectScore, answeredQuestions);
+            Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
         }
 
     }
@@ -173,21 +190,33 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    //this method is called when the reset button is clicked and reset all answers restarting the activity
     public void reset(View view) {
         Intent resetQuiz = new Intent(this, QuizActivity.class);
         String message = getUserName();
-        if (message.equals("")) {
-            Toast.makeText(this, R.string.no_name_error, Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            resetQuiz.putExtra(MainActivity.PLAYER_NAME, message);
-            startActivity(resetQuiz);
-            this.finish();
-        }
+        resetQuiz.putExtra(MainActivity.PLAYER_NAME, message);
+        startActivity(resetQuiz);
+        this.finish();
     }
 
-    //this method reset all answers
+    //this method creates Score summary.
+    private String createScoreSummary(int score, int incorrectScore, int noAnsweredQuestions) {
+        resultMessage = getUserName() + getString(R.string.result_name_message);
+        resultMessage += "\n" + getString(R.string.result_correct) + score + "/" + totalNoQuestions;
+        resultMessage += "\n" + getString(R.string.resut_wrong) + incorrectScore + "/" + totalNoQuestions;
+        resultMessage += "\n" + getString(R.string.result_answered) + noAnsweredQuestions + "/" + totalNoQuestions;
+        return resultMessage;
+    }
 
-
+    // this method is called when the Share button is clicked and allow the user to share the game results via e-mail, social apps, etc.
+    public void share(View view) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, resultMessage);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 
 }

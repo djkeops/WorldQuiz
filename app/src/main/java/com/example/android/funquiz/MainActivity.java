@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         String message = nameField.getText().toString().trim();
         if (message.equals("")) {
             Toast.makeText(this, R.string.no_name_error, Toast.LENGTH_SHORT).show();
-            return;
         } else {
             openQuiz.putExtra(PLAYER_NAME, message);
             startActivity(openQuiz);
