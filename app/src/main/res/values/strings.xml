@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">World Quiz</string>
-    <string name="begin_Button">Start</string>
+    <string name="app_name" translatable="false">World Quiz</string>
+    <string name="begin_Button" translatable="false">Start</string>
     <string name="name_filed_hint">Please, enter your name</string>
     <string name="no_name_error">Please, enter your name before start!</string>
     <string name="edit_text_view_hint5">Are you sure that it\'s a dessert?!</string>
@@ -57,23 +57,23 @@
     <string name="question8_e">England</string>
     <string name="hint8">There are many countries in which English is the Official Language, but England, Australia and the United States aren\’t among them. An official language is defined as a language that has been given legal status for use in a nation\’s courts, parliament and administration. In England, Australia and over half the USA, English is the unofficial language. Countries such as Canada (French and English) and Pakistan do have legally defined official languages.</string>
 
-    <string name="_1">1</string>
-    <string name="_2">2</string>
-    <string name="_3">3</string>
-    <string name="_4">4</string>
-    <string name="_5">5</string>
-    <string name="_6">6</string>
-    <string name="_7">7</string>
-    <string name="_8">8</string>
-    <string name="reset_Button">reset</string>
-    <string name="submit_Button">submit</string>
-    <string name="share_Button">share</string>
+    <string name="_1" translatable="false">1</string>
+    <string name="_2" translatable="false">2</string>
+    <string name="_3" translatable="false">3</string>
+    <string name="_4" translatable="false">4</string>
+    <string name="_5" translatable="false">5</string>
+    <string name="_6" translatable="false">6</string>
+    <string name="_7" translatable="false">7</string>
+    <string name="_8" translatable="false">8</string>
+    <string name="reset_Button" translatable="false">reset</string>
+    <string name="submit_Button" translatable="false">submit</string>
+    <string name="share_Button" translatable="false">share</string>
 
     <string name="zero_answers_message">Please, answer at least one question!</string>
     <string name="result_correct">Correct answers:</string>
     <string name="resut_wrong">Wrong answers:</string>
     <string name="result_answered">Answered questions:</string>
-    <string name="result_name_message">, your score is:</string>
+    <string name="result_name_message">, your score in World Quiz is:</string>
     <string name="share_subject">World Quiz results</string>
     <string name="welcome">Welcome,</string>
 
