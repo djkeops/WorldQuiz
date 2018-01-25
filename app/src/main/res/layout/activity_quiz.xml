@@ -524,6 +524,8 @@
                 style="@style/Buttons"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorButton"
+                android:drawableLeft="@drawable/ic_autorenew_white_24dp"
+                android:drawableStart="@drawable/ic_autorenew_white_24dp"
                 android:onClick="reset"
                 android:text="@string/reset_Button" />
 
@@ -532,6 +534,8 @@
                 style="@style/Buttons"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorButton"
+                android:drawableLeft="@drawable/ic_done_white_24dp"
+                android:drawableStart="@drawable/ic_done_white_24dp"
                 android:onClick="submit"
                 android:text="@string/submit_Button" />
 
@@ -541,6 +545,8 @@
                 android:layout_weight="1"
                 android:alpha=".5"
                 android:backgroundTint="@color/colorButton"
+                android:drawableLeft="@drawable/ic_share_white_24dp"
+                android:drawableStart="@drawable/ic_share_white_24dp"
                 android:enabled="false"
                 android:onClick="share"
                 android:text="@string/share_Button" />

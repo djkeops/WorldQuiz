@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ public class QuizActivity extends AppCompatActivity {
     int[] checkBoxes = {R.id.check_8_a, R.id.check_8_b, R.id.check_8_c, R.id.check_8_d, R.id.check_8_e};
     Button shareButton;
     Button resetButton;
-    TextView answerQ5;
+    EditText answerQ5;
     TextView hintTextView;
 
     // declare a variable for the quiz results
@@ -42,6 +43,7 @@ public class QuizActivity extends AppCompatActivity {
 
         //declare view with question 5 answer
         answerQ5 = findViewById(R.id.answer_edit_text_5);
+
 
         //Display welcome message
         WelcomeTextView = findViewById(R.id.WelcomeTextView);
