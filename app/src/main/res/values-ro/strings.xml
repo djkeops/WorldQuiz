@@ -54,4 +54,5 @@
     <string name="result_name_message">, scorul tău în World Quiz este:</string>
     <string name="share_subject">Rezultate World Quiz</string>
     <string name="welcome">Bine ai venit,\u0020</string>
+    <string name="language">Limba</string>
 </resources>

@@ -76,6 +76,9 @@
     <string name="result_name_message">, your score in World Quiz is:</string>
     <string name="share_subject">World Quiz results</string>
     <string name="welcome">Welcome,</string>
+    <string name="language">Language</string>
+    <string name="english" translatable="false">English</string>
+    <string name="romanian" translatable="false">Română</string>
 
 
 </resources>
