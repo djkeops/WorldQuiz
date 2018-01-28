@@ -24,6 +24,7 @@
         android:layout_centerInParent="true"
         android:hint="@string/name_filed_hint"
         android:inputType="textCapWords"
+        android:textAlignment="center"
         android:textColor="@color/colorText"
         android:textColorHint="@color/colorText"
         android:textSize="@dimen/main_text_size" />
