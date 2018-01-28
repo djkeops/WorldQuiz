@@ -12,17 +12,17 @@
     <style name="QuizLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:layout_marginBottom">@dimen/mid_margin</item>
+        <item name="android:paddingTop">@dimen/quizLayout_padding</item>
+        <item name="android:paddingBottom">@dimen/quizLayout_padding</item>
         <item name="android:background">@drawable/rounded_shape</item>
     </style>
 
     <style name="QuizIcon">
-        <item name="android:layout_width">30dp</item>
-        <item name="android:layout_height">30dp</item>
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_width">@dimen/quizIcon_size</item>
+        <item name="android:layout_height">@dimen/quizIcon_size</item>
+        <item name="android:layout_marginTop">@dimen/small_margin</item>
+        <item name="android:layout_marginLeft">@dimen/large_margin</item>
         <item name="android:background">@drawable/quiz_circle</item>
         <item name="android:textSize">@dimen/question_text_size</item>
         <item name="android:textColor">@color/colorText</item>
@@ -33,8 +33,8 @@
     <style name="QuizQuestion">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:minHeight">40dp</item>
-        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:minHeight">@dimen/question_minHeight</item>
+        <item name="android:layout_marginLeft">@dimen/large_margin</item>
         <item name="android:textSize">@dimen/question_text_size</item>
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textStyle">bold</item>
@@ -43,16 +43,16 @@
 
     <style name="QuizSeparator">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">2dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_height">@dimen/separator_height</item>
+        <item name="android:layout_marginTop">@dimen/mid_margin</item>
+        <item name="android:layout_marginBottom">@dimen/mid_margin</item>
         <item name="android:background">@color/colorBackground</item>
     </style>
 
     <style name="QuizRadioGroup">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginLeft">@dimen/mid_margin</item>
     </style>
 
     <style name="QuizRadioButton">
@@ -66,7 +66,7 @@
     <style name="QuizHint">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginLeft">@dimen/large_margin</item>
         <item name="android:textSize">@dimen/answer_text_size</item>
         <item name="android:textColor">@color/colorWrong</item>
         <item name="android:gravity">center_vertical</item>
@@ -79,15 +79,14 @@
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">@dimen/mid_margin</item>
+        <item name="android:layout_marginBottom">@dimen/mid_margin</item>
     </style>
 
     <style name="AnswerEditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_marginLeft">@dimen/large_margin</item>
         <item name="android:textSize">@dimen/answer_text_size</item>
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textStyle">bold</item>
@@ -97,10 +96,10 @@
     <style name="Buttons">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">16dp</item>
-        <item name="android:layout_marginBottom">16dp</item>
-        <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">@dimen/large_margin</item>
+        <item name="android:layout_marginBottom">@dimen/large_margin</item>
+        <item name="android:layout_marginLeft">@dimen/small_margin</item>
+        <item name="android:layout_marginRight">@dimen/small_margin</item>
         <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:textColor">@color/colorText</item>
     </style>

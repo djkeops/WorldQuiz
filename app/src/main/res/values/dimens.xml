@@ -4,4 +4,12 @@
     <dimen name="question_text_size">16sp</dimen>
     <dimen name="answer_text_size">13sp</dimen>
     <dimen name="button_text_size">14sp</dimen>
+    <dimen name="image_size_portrait">330dp</dimen>
+    <dimen name="large_margin">16dp</dimen>
+    <dimen name="mid_margin">10dp</dimen>
+    <dimen name="small_margin">5dp</dimen>
+    <dimen name="quizLayout_padding">8dp</dimen>
+    <dimen name="quizIcon_size">30dp</dimen>
+    <dimen name="question_minHeight">40dp</dimen>
+    <dimen name="separator_height">2dp</dimen>
 </resources>
