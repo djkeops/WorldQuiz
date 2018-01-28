@@ -1,6 +1,8 @@
 package com.example.android.funquiz;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -48,6 +52,7 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLanguage();
         setContentView(R.layout.activity_quiz);
 
         //declare buttons
@@ -66,6 +71,7 @@ public class QuizActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             answeredQuestions = savedInstanceState.getInt("answeredQuestions");
 
+            //review answers if the orientation is changed and the submit button was pressed with a delay for layout loading
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -257,4 +263,18 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    //this method load the language
+    private void loadLanguage() {
+        Locale locale = new Locale(getLangCode());
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+    }
+
+    //this method get Language Code
+    private String getLangCode() {
+        SharedPreferences preferences = getSharedPreferences(MainActivity.FILE_NAME, MODE_PRIVATE);
+        return preferences.getString(MainActivity.KEY_LANG, "en");
+    }
 }

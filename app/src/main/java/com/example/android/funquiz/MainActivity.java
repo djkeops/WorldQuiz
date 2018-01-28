@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     public final static String PLAYER_NAME = "com.example.android.funquiz.MESSAGE";
     // two variables used by SharedPreferences
-    private static final String FILE_NAME = "file_lang"; // preference file name
-    private static final String KEY_LANG = "key_lang"; // preference key
+    public static final String FILE_NAME = "file_lang"; // preference file name
+    public static final String KEY_LANG = "key_lang"; // preference key
     EditText nameField;
 
     @Override
@@ -65,14 +65,12 @@ public class MainActivity extends AppCompatActivity {
         Configuration config = new Configuration();
         config.locale = locale;
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-        setTitle(getResources().getString(R.string.app_name));
     }
 
-    //this method save english as the default language
+    //this method get Language Code
     private String getLangCode() {
         SharedPreferences preferences = getSharedPreferences(FILE_NAME, MODE_PRIVATE);
-        String langCode = preferences.getString(KEY_LANG, "en");
-        return langCode;
+        return preferences.getString(KEY_LANG, "en");
     }
 
     //this method deal language changing
