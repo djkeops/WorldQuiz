@@ -161,7 +161,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         //check Text answer
-        if (answerQ5.getText().toString().trim().equals(getString(R.string.answer5))) {
+        if (answerQ5.getText().toString().trim().equalsIgnoreCase(getString(R.string.answer5))) {
             score++;
             answerQ5.setTextColor(getResources().getColor(R.color.colorCorrect));
             hintTextView = findViewById(hintsTextViews[6]);
