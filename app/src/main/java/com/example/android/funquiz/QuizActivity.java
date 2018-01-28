@@ -1,6 +1,7 @@
 package com.example.android.funquiz;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,18 @@ public class QuizActivity extends AppCompatActivity {
     //declare correct answers;
     int[] correctRadioAnswers = {R.id.radio_1_a, R.id.radio_2_c, R.id.radio_3_d, R.id.radio_4_c, R.id.radio_6_a, R.id.radio_7_a};
 
+    //for savedInstanceState
+    boolean submited = false;
+    int score = 0;
+    int incorrectScore = 0;
+    int answeredQuestions = 0;
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("answeredQuestions", answeredQuestions);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +62,22 @@ public class QuizActivity extends AppCompatActivity {
         WelcomeTextView = findViewById(R.id.WelcomeTextView);
         String welcomeMessage = getString(R.string.welcome) + getUserName() + "!";
         WelcomeTextView.setText(welcomeMessage);
+
+        if (savedInstanceState != null) {
+            answeredQuestions = savedInstanceState.getInt("answeredQuestions");
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (answeredQuestions != 0) {
+                        reviewAnswers();
+                        makeHintsVisible();
+                    }
+                }
+            }, 10);
+
+        }
 
     }
 
@@ -68,7 +97,7 @@ public class QuizActivity extends AppCompatActivity {
 
     //counts no. of answered questions
     public int countAnswers() {
-        int answeredQuestions = 0;
+        answeredQuestions = 0;
         for (int groupID : radioGroups) {
             RadioGroup radioGroup = findViewById(groupID);
             if (radioGroup.getCheckedRadioButtonId() != -1) answeredQuestions++;
@@ -89,94 +118,101 @@ public class QuizActivity extends AppCompatActivity {
     //this method is called when the submit button is clicked and calculate results according to the user answers
     public void submit(View view) {
 
-        //Correct answers score
-        int score = 0;
-        //Incorrect answers score
-        int incorrectScore = 0;
-
-        //check if at least one question is answered
-        int answeredQuestions = countAnswers();
+        answeredQuestions = countAnswers();
         if (answeredQuestions == 0) {
             Toast.makeText(this, R.string.zero_answers_message, Toast.LENGTH_SHORT).show();
         } else {
-            shareButton.setAlpha(1);
-            shareButton.setEnabled(true);
-
-            //check radioGroups answers
-            for (int j = 0; j < radioGroups.length; j++) {
-                RadioGroup radioGroup = findViewById(radioGroups[j]);
-                hintTextView = findViewById(hintsTextViews[j]);
-                RadioButton checkedRadioButton = findViewById(radioGroup.getCheckedRadioButtonId());
-                if (radioGroup.getCheckedRadioButtonId() == correctRadioAnswers[j]) {
-                    score++;
-                    checkedRadioButton.setTextColor(getResources().getColor(R.color.colorCorrect));
-                    hintTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
-                } else if (radioGroup.getCheckedRadioButtonId() != -1) {
-                    incorrectScore++;
-                    checkedRadioButton.setTextColor(getResources().getColor(R.color.colorWrong));
-                }
-            }
-
-            //check Text answer
-            if (answerQ5.getText().toString().trim().equals(getString(R.string.answer5))) {
-                score++;
-                answerQ5.setTextColor(getResources().getColor(R.color.colorCorrect));
-                hintTextView = findViewById(hintsTextViews[6]);
-                hintTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
-            } else if (!answerQ5.getText().toString().trim().equals("")) {
-                incorrectScore++;
-                hintTextView = findViewById(hintsTextViews[6]);
-                hintTextView.setTextColor(getResources().getColor(R.color.colorWrong));
-            }
-
-            //check Check answers
-            CheckBox checkBox1 = findViewById(checkBoxes[0]);
-            CheckBox checkBox2 = findViewById(checkBoxes[1]);
-            CheckBox checkBox3 = findViewById(checkBoxes[2]);
-            CheckBox checkBox4 = findViewById(checkBoxes[3]);
-            CheckBox checkBox5 = findViewById(checkBoxes[4]);
-            if (checkBox2.isChecked() && checkBox4.isChecked() && !checkBox1.isChecked() && !checkBox3.isChecked() && !checkBox5.isChecked()) {
-                score++;
-                checkBox2.setTextColor(getResources().getColor(R.color.colorCorrect));
-                checkBox4.setTextColor(getResources().getColor(R.color.colorCorrect));
-                hintTextView = findViewById(hintsTextViews[7]);
-                hintTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
-            } else {
-
-
-                for (int checkBoxID : checkBoxes) {
-                    CheckBox checkBox = findViewById(checkBoxID);
-                    if (checkBox.isChecked()) {
-                        incorrectScore++;
-                        break;
-                    }
-                }
-
-
-                hintTextView = findViewById(hintsTextViews[7]);
-                hintTextView.setTextColor(getResources().getColor(R.color.colorWrong));
-
-                for (int checkBoxID : checkBoxes) {
-                    CheckBox checkBox = findViewById(checkBoxID);
-                    if (checkBox.isChecked() && (checkBoxID == checkBoxes[1] || checkBoxID == checkBoxes[3])) {
-                        checkBox.setTextColor(getResources().getColor(R.color.colorCorrect));
-                    } else if (checkBox.isChecked()) {
-                        checkBox.setTextColor(getResources().getColor(R.color.colorWrong));
-                    } else if (!checkBox.isChecked() && (checkBoxID == checkBoxes[1] || checkBoxID == checkBoxes[3])) {
-                        checkBox.setTextColor(getResources().getColor(R.color.colorWrong));
-                    }
-                }
-            }
-
+            reviewAnswers();
             makeHintsVisible();
-
-            String resultMessage = createScoreSummary(score, incorrectScore, answeredQuestions);
-            Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
+            displayResultToast();
         }
-
     }
 
-    //this method make the hints visible
+
+    public void reviewAnswers() {
+
+        //Correct answers score
+        score = 0;
+        //Incorrect answers score
+        incorrectScore = 0;
+
+        shareButton.setAlpha(1);
+        shareButton.setEnabled(true);
+
+        //check radioGroups answers
+        for (int j = 0; j < radioGroups.length; j++) {
+            RadioGroup radioGroup = findViewById(radioGroups[j]);
+            hintTextView = findViewById(hintsTextViews[j]);
+            RadioButton checkedRadioButton = findViewById(radioGroup.getCheckedRadioButtonId());
+            if (radioGroup.getCheckedRadioButtonId() == correctRadioAnswers[j]) {
+                score++;
+                checkedRadioButton.setTextColor(getResources().getColor(R.color.colorCorrect));
+                hintTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
+            } else if (radioGroup.getCheckedRadioButtonId() != -1) {
+                incorrectScore++;
+                checkedRadioButton.setTextColor(getResources().getColor(R.color.colorWrong));
+            }
+        }
+
+        //check Text answer
+        if (answerQ5.getText().toString().trim().equals(getString(R.string.answer5))) {
+            score++;
+            answerQ5.setTextColor(getResources().getColor(R.color.colorCorrect));
+            hintTextView = findViewById(hintsTextViews[6]);
+            hintTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
+        } else if (!answerQ5.getText().toString().trim().equals("")) {
+            incorrectScore++;
+            hintTextView = findViewById(hintsTextViews[6]);
+            hintTextView.setTextColor(getResources().getColor(R.color.colorWrong));
+        }
+
+        //check Check answers
+        CheckBox checkBox1 = findViewById(checkBoxes[0]);
+        CheckBox checkBox2 = findViewById(checkBoxes[1]);
+        CheckBox checkBox3 = findViewById(checkBoxes[2]);
+        CheckBox checkBox4 = findViewById(checkBoxes[3]);
+        CheckBox checkBox5 = findViewById(checkBoxes[4]);
+        if (checkBox2.isChecked() && checkBox4.isChecked() && !checkBox1.isChecked() && !checkBox3.isChecked() && !checkBox5.isChecked()) {
+            score++;
+            checkBox2.setTextColor(getResources().getColor(R.color.colorCorrect));
+            checkBox4.setTextColor(getResources().getColor(R.color.colorCorrect));
+            hintTextView = findViewById(hintsTextViews[7]);
+            hintTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
+        } else {
+
+
+            for (int checkBoxID : checkBoxes) {
+                CheckBox checkBox = findViewById(checkBoxID);
+                if (checkBox.isChecked()) {
+                    incorrectScore++;
+                    break;
+                }
+            }
+
+
+            hintTextView = findViewById(hintsTextViews[7]);
+            hintTextView.setTextColor(getResources().getColor(R.color.colorWrong));
+
+            for (int checkBoxID : checkBoxes) {
+                CheckBox checkBox = findViewById(checkBoxID);
+                if (checkBox.isChecked() && (checkBoxID == checkBoxes[1] || checkBoxID == checkBoxes[3])) {
+                    checkBox.setTextColor(getResources().getColor(R.color.colorCorrect));
+                } else if (checkBox.isChecked()) {
+                    checkBox.setTextColor(getResources().getColor(R.color.colorWrong));
+                } else if (!checkBox.isChecked() && (checkBoxID == checkBoxes[1] || checkBoxID == checkBoxes[3])) {
+                    checkBox.setTextColor(getResources().getColor(R.color.colorWrong));
+                }
+            }
+        }
+    }
+
+    //this method displays the scores
+    public void displayResultToast() {
+        String resultMessage = createScoreSummary(score, incorrectScore, answeredQuestions);
+        Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
+    }
+
+    //this method makes the hints visible
     public void makeHintsVisible() {
         //make hints separators visible
         for (int hintSeparatorID : hintsSeparators) {
