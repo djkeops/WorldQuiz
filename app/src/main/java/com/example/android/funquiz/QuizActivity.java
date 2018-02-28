@@ -72,8 +72,8 @@ public class QuizActivity extends AppCompatActivity {
             answeredQuestions = savedInstanceState.getInt("answeredQuestions");
 
             //review answers if the orientation is changed and the submit button was pressed with a delay for layout loading
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
+            final Handler delayer = new Handler();
+            delayer.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     if (answeredQuestions != 0) {
