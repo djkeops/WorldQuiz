@@ -38,7 +38,6 @@ public class QuizActivity extends AppCompatActivity {
     int[] correctRadioAnswers = {R.id.radio_1_a, R.id.radio_2_c, R.id.radio_3_d, R.id.radio_4_c, R.id.radio_6_a, R.id.radio_7_a};
 
     //for savedInstanceState
-    boolean submited = false;
     int score = 0;
     int incorrectScore = 0;
     int answeredQuestions = 0;
@@ -57,7 +56,7 @@ public class QuizActivity extends AppCompatActivity {
 
         //declare buttons
         shareButton = findViewById(R.id.shareButton);
-        resetButton = findViewById(R.id.restButton);
+        resetButton = findViewById(R.id.resetButton);
 
         //declare view with question 5 answer
         answerQ5 = findViewById(R.id.answer_edit_text_5);
@@ -82,26 +81,31 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 }
             }, 10);
-
         }
-
     }
 
-
-    // Returns the user to the Main screen and finnish this activity when the back button is clicked.
+    // this method returns the user to the MainActivity
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, MainActivity.class));
         this.finish();
     }
 
-    //Getting user name from MainActivity
+    /**
+     * this method is getting the user name from MainActivity
+     *
+     * @return the user name
+     */
     public String getUserName() {
         Intent openQuiz = getIntent();
         return openQuiz.getStringExtra(MainActivity.PLAYER_NAME);
     }
 
-    //counts no. of answered questions
+    /**
+     * this method counts the answered questions
+     *
+     * @return no. of the answered questions
+     */
     public int countAnswers() {
         answeredQuestions = 0;
         for (int groupID : radioGroups) {
@@ -121,9 +125,12 @@ public class QuizActivity extends AppCompatActivity {
         return answeredQuestions;
     }
 
-    //this method is called when the submit button is clicked and calculate results according to the user answers
+    /**
+     * this method is called when the submit button is clicked and calculate results according to the user answers
+     *
+     * @param view submitButton
+     */
     public void submit(View view) {
-
         answeredQuestions = countAnswers();
         if (answeredQuestions == 0) {
             Toast.makeText(this, R.string.zero_answers_message, Toast.LENGTH_SHORT).show();
@@ -134,12 +141,11 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-
     public void reviewAnswers() {
 
-        //Correct answers score
+        //correct answers score
         score = 0;
-        //Incorrect answers score
+        //incorrect answers score
         incorrectScore = 0;
 
         shareButton.setAlpha(1);
@@ -186,7 +192,6 @@ public class QuizActivity extends AppCompatActivity {
             hintTextView.setTextColor(getResources().getColor(R.color.colorCorrect));
         } else {
 
-
             for (int checkBoxID : checkBoxes) {
                 CheckBox checkBox = findViewById(checkBoxID);
                 if (checkBox.isChecked()) {
@@ -194,7 +199,6 @@ public class QuizActivity extends AppCompatActivity {
                     break;
                 }
             }
-
 
             hintTextView = findViewById(hintsTextViews[7]);
             hintTextView.setTextColor(getResources().getColor(R.color.colorWrong));
@@ -234,7 +238,11 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    //this method is called when the reset button is clicked and reset all answers restarting the activity
+    /**
+     * this method is called when the reset button is clicked and reset all answers restarting the activity
+     *
+     * @param view resetButton
+     */
     public void reset(View view) {
         Intent resetQuiz = new Intent(this, QuizActivity.class);
         String message = getUserName();
@@ -243,7 +251,14 @@ public class QuizActivity extends AppCompatActivity {
         this.finish();
     }
 
-    //this method creates Score summary.
+    /**
+     * this method creates Score summary
+     *
+     * @param score               correct answers score
+     * @param incorrectScore      incorrect answers score
+     * @param noAnsweredQuestions total number of answered questions
+     * @return the result message
+     */
     private String createScoreSummary(int score, int incorrectScore, int noAnsweredQuestions) {
         resultMessage = getUserName() + getString(R.string.result_name_message);
         resultMessage += "\n" + getString(R.string.result_correct) + score + "/" + totalNoQuestions;
@@ -252,7 +267,11 @@ public class QuizActivity extends AppCompatActivity {
         return resultMessage;
     }
 
-    // this method is called when the Share button is clicked and allow the user to share the game results via e-mail, social apps, etc.
+    /**
+     * this method is called when the Share button is clicked and allow the user to share the game results via e-mail, social apps, etc.
+     *
+     * @param view shareButton
+     */
     public void share(View view) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
@@ -272,7 +291,11 @@ public class QuizActivity extends AppCompatActivity {
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 
-    //this method get Language Code
+    /**
+     * this method is getting Language Code
+     *
+     * @return preferred language code
+     */
     private String getLangCode() {
         SharedPreferences preferences = getSharedPreferences(MainActivity.FILE_NAME, MODE_PRIVATE);
         return preferences.getString(MainActivity.KEY_LANG, "en");

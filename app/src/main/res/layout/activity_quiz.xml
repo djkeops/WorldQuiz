@@ -520,7 +520,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/restButton"
+                android:id="@+id/resetButton"
                 style="@style/Buttons"
                 android:layout_width="0dp"
                 android:layout_weight="1"
