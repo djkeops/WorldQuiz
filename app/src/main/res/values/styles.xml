@@ -100,6 +100,7 @@
         <item name="android:layout_marginBottom">@dimen/large_margin</item>
         <item name="android:layout_marginLeft">@dimen/small_margin</item>
         <item name="android:layout_marginRight">@dimen/small_margin</item>
+        <item name="android:background">@color/colorButton</item>
         <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:textColor">@color/colorText</item>
     </style>

@@ -34,7 +34,6 @@
         style="@style/Buttons"
         android:layout_below="@id/nameField"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/colorButton"
         android:onClick="start"
         android:text="@string/begin_Button" />
 

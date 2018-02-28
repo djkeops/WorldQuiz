@@ -4,51 +4,43 @@
     <string name="name_filed_hint">Please, enter your name</string>
     <string name="no_name_error">Please, enter your name before start!</string>
     <string name="edit_text_view_hint5">Are you sure that it\'s a dessert?!</string>
-
     <string name="question1">What\'s the main ingredient of air?</string>
     <string name="question1_a">Nitrogen</string>
     <string name="question1_b">Carbon dioxide</string>
     <string name="question1_c">Hydrogen</string>
     <string name="question1_d">Oxygen</string>
     <string name="hint1">Nitrogen. As every twelve-year-old knows, it accounts for 78 per cent of the air.\nLess than 21 per cent of air is oxygen and only three hundredths of 1 per cent of the air is carbon dioxide.</string>
-
     <string name="question2">Which of the following was the first animal to be domesticated?</string>
     <string name="question2_a">Sheep</string>
     <string name="question2_b">Pig</string>
     <string name="question2_c">Reindeer</string>
     <string name="question2_d">Horse</string>
     <string name="hint2">Around 12,000 years ago, palaeolithic hunter-gatherers on what is now the Russian/Mongolian border learned to lure reindeer away from their huge migratory groups and breed them to create their own small herd.</string>
-
     <string name="question3">What has the largest brain in comparison to its size?</string>
     <string name="question3_a">Elephants</string>
     <string name="question3_b">Dolphins</string>
     <string name="question3_c">Humans</string>
     <string name="question3_d">Ants</string>
     <string name="hint3">The ant. An ant\'s brain is about 6 per cent of its total body weight. An average human brian weighs 1.6 kg, which is a little over 2 per cent of body weight.</string>
-
     <string name="question4">What\'s the commonest material in the world?</string>
     <string name="question4_a">Oxygen</string>
     <string name="question4_b">Nitrogen</string>
     <string name="question4_c">Magnesium silicate perovskite</string>
     <string name="question4_d">Water</string>
     <string name="hint4">The answer is magnesium silicate perovskite, a mineral compound of magnesium, silicon and oxygen. It accounts for about half the total mass of the planet. It\'s what the Earth\'s mantle is mostly made from.</string>
-
     <string name="question5">In which continent is the driest place on earth?</string>
     <string name="answer5">Antarctica</string>
     <string name="hint5">Antarctica. Parts of the continents have seen no rain for two million years.</string>
-
     <string name="question6">Which came first, the chicken or the egg?</string>
     <string name="question6_a">The egg</string>
     <string name="question6_b">The chicken</string>
     <string name="hint6">The egg. Final answer.\nBirds evolved from reptiles, so the first bird must have come out of an egg – laid by a reptile.</string>
-
     <string name="question7">In what country is the largest part of the Nile River?</string>
     <string name="question7_a">Sudan</string>
     <string name="question7_b">Egypt</string>
     <string name="question7_c">Uganda</string>
     <string name="question7_d">Ethiopia</string>
     <string name="hint7">The Nile rises in Rwanda and flows through Ethiopia, Uganda, the Democratic Republic of Congo and Egypt, but the largest section traverses Sudan, despite its timeless association with Egypt.</string>
-
     <string name="question8">In which of the following countries English is the official language?</string>
     <string name="question8_a">United States</string>
     <string name="question8_b">Pakistan</string>
@@ -56,7 +48,6 @@
     <string name="question8_d">Canada</string>
     <string name="question8_e">England</string>
     <string name="hint8">There are many countries in which English is the Official Language, but England, Australia and the United States aren\’t among them. An official language is defined as a language that has been given legal status for use in a nation\’s courts, parliament and administration. In England, Australia and over half the USA, English is the unofficial language. Countries such as Canada (French and English) and Pakistan do have legally defined official languages.</string>
-
     <string name="_1" translatable="false">1</string>
     <string name="_2" translatable="false">2</string>
     <string name="_3" translatable="false">3</string>
@@ -68,7 +59,6 @@
     <string name="reset_Button" translatable="false">reset</string>
     <string name="submit_Button" translatable="false">submit</string>
     <string name="share_Button" translatable="false">share</string>
-
     <string name="zero_answers_message">Please, answer at least one question!</string>
     <string name="result_correct">Correct answers:</string>
     <string name="resut_wrong">Wrong answers:</string>
@@ -79,6 +69,4 @@
     <string name="language">Language</string>
     <string name="english" translatable="false">English</string>
     <string name="romanian" translatable="false">Română</string>
-
-
 </resources>

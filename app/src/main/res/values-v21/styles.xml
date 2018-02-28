@@ -8,4 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:navigationBarColor">@android:color/black</item>
     </style>
+
+    <style name="Buttons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/large_margin</item>
+        <item name="android:layout_marginBottom">@dimen/large_margin</item>
+        <item name="android:layout_marginLeft">@dimen/small_margin</item>
+        <item name="android:layout_marginRight">@dimen/small_margin</item>
+        <item name="android:backgroundTint">@color/colorButton</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
 </resources>
