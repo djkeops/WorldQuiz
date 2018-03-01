@@ -38,9 +38,9 @@ public class QuizActivity extends AppCompatActivity {
     int[] correctRadioAnswers = {R.id.radio_1_a, R.id.radio_2_c, R.id.radio_3_d, R.id.radio_4_c, R.id.radio_6_a, R.id.radio_7_a};
 
     //for savedInstanceState
-    int score = 0;
-    int incorrectScore = 0;
-    int answeredQuestions = 0;
+    private int score = 0;
+    private int incorrectScore = 0;
+    private int answeredQuestions = 0;
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
@@ -96,7 +96,7 @@ public class QuizActivity extends AppCompatActivity {
      *
      * @return the user name
      */
-    public String getUserName() {
+    private String getUserName() {
         Intent openQuiz = getIntent();
         return openQuiz.getStringExtra(MainActivity.PLAYER_NAME);
     }
@@ -106,7 +106,7 @@ public class QuizActivity extends AppCompatActivity {
      *
      * @return no. of the answered questions
      */
-    public int countAnswers() {
+    private int countAnswers() {
         answeredQuestions = 0;
         for (int groupID : radioGroups) {
             RadioGroup radioGroup = findViewById(groupID);
@@ -141,7 +141,7 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    public void reviewAnswers() {
+    private void reviewAnswers() {
 
         //correct answers score
         score = 0;
@@ -217,13 +217,13 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     //this method displays the scores
-    public void displayResultToast() {
+    private void displayResultToast() {
         String resultMessage = createScoreSummary(score, incorrectScore, answeredQuestions);
         Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
     }
 
     //this method makes the hints visible
-    public void makeHintsVisible() {
+    private void makeHintsVisible() {
         //make hints separators visible
         for (int hintSeparatorID : hintsSeparators) {
             View hintSeparator = findViewById(hintSeparatorID);
